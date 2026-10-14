@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TC Tech &amp; Quality</title>
+<meta name="description" content="Thiago Cezar · Senior Software Quality Assurance / SDET. 10 anos em Quality Engineering, automação de testes Web, Mobile e APIs.">
+<meta property="og:title" content="TC Tech &amp; Quality · Thiago Cezar">
+<meta property="og:description" content="Senior Software Quality Assurance / SDET. Automação de testes Web, Mobile e APIs.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#0a0a0a;--surface:#131313;--surface2:#1a1a1a;--border:#2a2a2a;
+  --text:#f5f5f5;--muted:#9a9a9a;--faint:#6b6b6b;
+  --orange:#ff7a1a;--orange2:#ffb37a;
+  --mono:ui-monospace,"JetBrains Mono","Fira Code",Consolas,"SFMono-Regular",monospace;
+  box-sizing:border-box;color-scheme:dark;
+}
+*{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);line-height:1.6;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  background-image:
+    linear-gradient(rgba(255,122,26,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,122,26,.035) 1px,transparent 1px);
+  background-size:38px 38px;
+}
+a{color:var(--orange);text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+section{padding:70px 0}
+.tag{color:var(--orange)}
+.section-title{font-size:13px;color:var(--orange);letter-spacing:.04em;margin-bottom:26px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:"//";color:var(--faint)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,10,.85);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);margin-bottom:28px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;min-width:0}
+.brand .ic{width:26px;height:26px;flex:none}
+.brand .cnpj{color:var(--faint);font-size:11px;font-weight:400}
+nav{display:flex;gap:18px;font-size:12px}
+nav a{color:var(--muted)}
+nav a:hover{color:var(--orange)}
+
+/* mobile nav toggle */
+.nav-toggle{display:none;flex:none;width:34px;height:34px;border:1px solid var(--border);border-radius:6px;
+  background:var(--surface);align-items:center;justify-content:center;cursor:pointer;gap:4px;flex-direction:column}
+.nav-toggle span{display:block;width:16px;height:2px;background:var(--text);transition:transform .2s,opacity .2s}
+.nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* hero */
+.hero{padding:100px 0 70px;text-align:center;position:relative}
+.terminal{display:inline-block;text-align:left;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:16px 20px;margin-bottom:28px;box-shadow:0 0 40px rgba(255,122,26,.07)}
+.terminal .bar{display:flex;gap:6px;margin-bottom:10px}
+.terminal .dot{width:9px;height:9px;border-radius:50%;background:var(--border)}
+.terminal .cmd{color:var(--muted);font-size:12.5px}
+.terminal .cmd .tag{color:var(--orange)}
+#typed::after{content:"▊";color:var(--orange);animation:blink 1s step-start infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.hero h1{font-size:40px;letter-spacing:-.01em;margin-bottom:6px}
+.hero h1 .tag{color:var(--orange)}
+.hero .role{color:var(--muted);font-size:15px;margin-bottom:22px}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{border:1px solid var(--orange);color:var(--orange);padding:10px 20px;border-radius:6px;font-size:12.5px;
+  transition:background .2s,color .2s}
+.btn:hover{background:var(--orange);color:#0a0a0a}
+.btn.ghost{border-color:var(--border);color:var(--muted)}
+.btn.ghost:hover{border-color:var(--muted);color:var(--text);background:none}
+
+/* about */
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 26px}
+.about-card p{color:var(--muted);font-size:13.5px;margin-bottom:12px}
+.about-card p:last-child{margin-bottom:0}
+.about-card b{color:var(--text)}
+
+/* stack */
+.stack-group{margin-bottom:20px}
+.stack-group h4{font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.pills{display:flex;flex-wrap:wrap;gap:10px 12px}
+.pill{border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:12px;
+  padding:6px 12px;border-radius:5px;margin:2px;transition:border-color .2s,transform .2s}
+.pill:hover{border-color:var(--orange);transform:translateY(-2px)}
+
+/* timeline */
+.timeline{position:relative;padding-left:22px;border-left:1px solid var(--border)}
+.tl-item{position:relative;padding-bottom:26px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-27px;top:4px;width:9px;height:9px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 0 3px rgba(255,122,26,.15)}
+.tl-head{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;margin-bottom:4px}
+.tl-role{font-weight:700;font-size:14px}
+.tl-company{color:var(--orange);font-size:13px}
+.tl-dates{color:var(--faint);font-size:11px}
+.tl-desc{color:var(--muted);font-size:12.5px}
+
+/* grid cards (palestras/treinos/formacao/certs) */
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;
+  transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--orange);transform:translateY(-3px)}
+.card h4{font-size:13.5px;margin-bottom:4px}
+.card .meta{color:var(--orange);font-size:11.5px;margin-bottom:6px}
+.card p{color:var(--muted);font-size:12px}
+
+/* recommendations */
+.quote{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--orange);
+  border-radius:6px;padding:16px 18px;margin-bottom:14px}
+.quote p{color:var(--muted);font-size:13px;margin-bottom:10px}
+.quote .who{font-size:12.5px;font-weight:700}
+.quote .role{color:var(--faint);font-size:11px}
+
+footer{border-top:1px solid var(--border);padding:34px 0;text-align:center;color:var(--faint);font-size:11.5px}
+
+@media(max-width:768px){
+  .hero{padding-top:32px}
+  .nav-toggle{display:flex}
+  nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--surface);border-bottom:1px solid var(--border);
+    max-height:0;overflow:hidden;opacity:0;transition:max-height .25s ease,opacity .2s ease}
+  nav.open{max-height:360px;opacity:1}
+  nav a{padding:13px 20px;border-top:1px solid var(--border);font-size:13px}
+  nav a:first-child{border-top:none}
+  header .wrap{position:relative}
+  .cnpj{display:none}
+}
+
+@media(max-width:640px){
+  body{line-height:1.5}
+  .hero{padding:40px 0 24px}
+  .hero h1{font-size:28px;margin-bottom:4px}
+  .hero .role{margin-bottom:16px;font-size:13.5px}
+  .terminal{padding:12px 14px;margin-bottom:18px;max-width:100%}
+  .terminal .cmd{font-size:11.5px;word-break:break-all}
+  .terminal .bar{margin-bottom:8px}
+  section{padding:28px 0}
+  .section-title{margin-bottom:16px}
+  .wrap{padding:0 16px}
+  .grid-cards{grid-template-columns:1fr;gap:10px}
+  .about-card{padding:18px}
+  .about-card p{margin-bottom:10px;font-size:13px}
+  .stack-group{margin-bottom:16px}
+  .brand{font-size:12.5px}
+  .brand .ic{width:22px;height:22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg class="ic" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="13" stroke="#ff7a1a" stroke-width="2"/>
+        <circle cx="18" cy="18" r="7" stroke="#f5f5f5" stroke-width="2"/>
+        <circle cx="18" cy="18" r="2" fill="#ff7a1a"/>
+        <path d="M27 27L36 36" stroke="#f5f5f5" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">TC <span class="tag">TECH</span> &amp; QUALITY</span> <span class="cnpj">CNPJ: 68.364.741/0001-95</span>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav-menu">
+      <a href="#sobre">sobre</a>
+      <a href="#stack">stack</a>
+      <a href="#experiencia">projetos</a>
+      <a href="#palestras">palestras</a>
+      <a href="#formacao">formação</a>
+      <a href="#recomendacoes">recomendações</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap">
+  <div class="terminal">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="cmd"><span class="tag">thiago@tc-tech</span>:~$ <span id="typed"></span></div>
+  </div>
+  <h1>Thiago <span class="tag">Cezar</span></h1>
+  <p class="role">Senior Software Quality Assurance</p>
+  <div class="cta">
+    <a class="btn" href="#experiencia">Projetos</a>
+    <a class="btn ghost" href="#recomendacoes">Recomendações</a>
+  </div>
+</section>
+
+<section id="sobre" class="wrap reveal" style="margin-top:24px">
+  <p class="section-title">sobre</p>
+  <div class="about-card">
+    <p><b>Senior Software Development Engineer in Test (SDET)</b> com <b>10 anos de experiência</b> em Quality Engineering, especializado em estratégias de qualidade e automação de testes Web, Mobile e APIs.</p>
+    <p>Experiência sólida com Playwright, Cypress, Selenium, Appium, Robot Framework, Cucumber/BDD, Postman e HTTParty, utilizando JavaScript/TypeScript, além de SQL/MySQL, Git/GitLab, CI/CD, Swagger/OpenAPI, Node.js e OpenSearch.</p>
+    <p>Atuação em todo o ciclo de desenvolvimento, desde refinamentos e definição de critérios de aceite até testes E2E, integração, regressivos, smoke e validações de APIs, promovendo Quality Mindset, Shift-Left Testing e prevenção de defeitos em parceria com Engenharia, Produto e Negócio.</p>
+  </div>
+</section>
+
+<section id="stack" class="wrap reveal" style="margin-top:16px">
+  <p class="section-title">stack</p>
+  <div class="stack-group">
+    <h4>Frameworks de automação</h4>
+    <div class="pills">
+      <span class="pill">Cypress</span><span class="pill">Playwright</span><span class="pill">Appium</span>
+      <span class="pill">Selenium</span><span class="pill">Cucumber</span><span class="pill">Capybara</span>
+      <span class="pill">HTTParty</span>
+    </div>
+  </div>
+  <div class="stack-group">
+    <h4>Linguagens</h4>
+    <div class="pills">
+      <span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Ruby</span><span class="pill">Python</span>
+    </div>
+  </div>
+  <div class="stack-group">
+    <h4>Ecossistema moderno · Playwright</h4>
+    <div class="pills">
+      <span class="pill">Playwright Test Runner</span><span class="pill">Trace Viewer</span>
+      <span class="pill">Playwright MCP</span><span class="pill">Allure Report</span>
+      <span class="pill">axe-core (a11y)</span><span class="pill">Percy (visual testing)</span>
+      <span class="pill">Docker</span><span class="pill">GitHub Actions</span>
+    </div>
+  </div>
+  <div class="stack-group">
+    <h4>Versionamento &amp; CI/CD</h4>
+    <div class="pills">
+      <span class="pill">GitLab</span><span class="pill">Bitbucket</span><span class="pill">Azure DevOps</span>
+      <span class="pill">Bitrise</span><span class="pill">Sauce Labs</span><span class="pill">AWS Device Farm</span>
+      <span class="pill">GitHub</span><span class="pill">Jenkins</span>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia" class="wrap reveal">
+  <p class="section-title">projetos</p>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<section id="palestras" class="wrap reveal" style="margin-top:16px">
+  <p class="section-title">palestrante</p>
+  <div class="grid-cards">
+    <div class="card"><h4>1º Meetup ViajaNet</h4><p class="meta">Scrum: Agile Testing</p><p>Palestra voltada para o olhar do QA sobre Scrum.</p></div>
+    <div class="card"><h4>Make Your Experience</h4><p class="meta">Universidade São Judas Tadeu</p><p>2 dias: automação de testes para aplicações web e mobile.</p></div>
+    <div class="card"><h4>1º Meetup Fleury Digital</h4><p class="meta">Agile Testing &amp; automação</p><p>Palestrante convidado no primeiro Meetup Fleury Lab.</p></div>
+  </div>
+
+  <div class="stack-group" style="margin-top:30px">
+    <h4>Ex-instrutor de treinamentos</h4>
+    <div class="grid-cards">
+      <div class="card"><h4>FIQ — Focus in Quality</h4><p>Treinamentos em qualidade de software e automação.</p></div>
+      <div class="card"><h4>ACerT Certificações e Treinamentos</h4><p>Automação web (Capybara), mobile (Appium) e API (HTTParty), BDD/Gherkin com Cucumber e Ruby.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formacao" class="wrap reveal">
+  <p class="section-title">formação acadêmica</p>
+  <div class="grid-cards">
+    <div class="card"><h4>Universidade Cruzeiro do Sul</h4><p class="meta">2017 – 2019</p><p>Tecnólogo, Análise e Desenvolvimento de Sistemas</p></div>
+    <div class="card"><h4>Senac Brasil</h4><p class="meta">2013 – 2014</p><p>Gestão e Negócios</p></div>
+    <div class="card"><h4>Star Bit — Educação e Profissões</h4><p class="meta">2008 – 2010</p><p>Tecnologia da Informação</p></div>
+  </div>
+
+  <div class="stack-group" style="margin-top:30px">
+    <h4>Licenças e certificados</h4>
+    <div class="grid-cards">
+      <div class="card"><h4>Certified Management 3.0 — Foundation Workshop</h4><p class="meta">Management 3.0 · jan/2021</p><p>Credencial 210180777</p></div>
+      <div class="card"><h4>Scrum Foundation Professional Certificate</h4><p class="meta">Certiprof · jan/2019</p><p>Credencial 30992466</p></div>
+      <div class="card"><h4>Scrum Fundamentals Certified</h4><p class="meta">VMEdu.com · mai/2018</p><p>Credencial 627538</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="recomendacoes" class="wrap reveal">
+  <p class="section-title">recomendações</p>
+  <div class="quote">
+    <p>"Ótimo profissional, sempre disposto a ajudar a equipe e criar planos objetivos para melhoria do nosso trabalho. O Thiago tem uma didática muito boa referente a automação de testes, fazendo com que a equipe sempre mantenha o interesse e o conhecimento no mesmo nível."</p>
+    <div class="who">Leandro Lemos</div>
+    <div class="role">Analista de QA Sênior · Estratégia de Testes &amp; Automação</div>
+  </div>
+  <div class="quote">
+    <p>"Ótimo profissional, com amplo conhecimento em QA envolvendo testes automatizados e Scrum. Thiago é um exemplo de profissional indispensável em uma equipe."</p>
+    <div class="who">Rafael Magalhães</div>
+    <div class="role">Staff Software Developer @ TouchTunes</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">TC TECH &amp; QUALITY CNPJ: 68.364.741/0001-95 — Thiago Cezar · Quality Assurance &amp; Test Automation</div>
+</footer>
+
+<script>
+const exp=[
+ ["Senior Software Quality Assurance","abastece-aí","mar/2021 — atual","Liderança técnica em qualidade, automação de testes e disseminação do mindset de qualidade em todo o ciclo de desenvolvimento."],
+ ["Instrutor de treinamento","ACerT","fev/2019 — dez/2022","Treinamentos em automação web (Capybara), mobile (Appium) e API (HTTParty), BDD/Gherkin com Cucumber e Ruby."],
+ ["Technical Lead Quality Assurance","TradersClub","jul/2020 — mar/2021","Arquitetura de automação Web/Mobile/API com Ruby, Appium, Capybara, HTTParty e Cucumber. Entrevistas técnicas."],
+ ["Senior Software Quality Assurance","Fleury Medicina e Saúde","abr/2019 — jul/2020","Arquitetura de automação nas 3 frentes; testes de API com Postman/Newman; palestrante no 1º Meetup Fleury Digital."],
+ ["Palestrante convidado","Universidade São Judas Tadeu","nov/2019","2 dias no evento Make Your Experience: automação de testes web e mobile."],
+ ["Quality Assurance Mobile","ViajaNet","mai/2018 — mai/2019","Automação mobile, palestras em Agile Testing e treinamentos DOJO para o time de QA."],
+ ["Quality Assurance Mobile","FTD Educação","fev/2018 — mai/2018","Qualidade do produto Android/iOS e treinamentos comportamentais dentro do Scrum."],
+ ["Quality Assurance Web/Mobile","Inmetrics","jun/2017 — fev/2018","BDD com Cucumber, Ruby, Capybara/Selenium/Calabash/Appium, CI com Jenkins, Scrum e Jira."],
+ ["Software Tester","Spread Tecnologia","set/2016 — jun/2017","Testes manuais, massas, funcional, sanity, smoke, integração e regressivo. Gestão via HP-ALM."],
+ ["Estagiário de suporte de informática","Secretaria de Serviços — Prefeitura de SP","ago/2011 — ago/2012","Manutenção nos equipamentos da sala de informática."]
+];
+document.getElementById('timeline').innerHTML=exp.map(([role,comp,dates,desc])=>
+ `<div class="tl-item"><div class="tl-head"><span class="tl-role">${role}</span><span class="tl-company">· ${comp}</span></div>
+  <div class="tl-dates">${dates}</div><div class="tl-desc">${desc}</div></div>`).join('');
+
+const texto="whoami && cat sobre.txt";
+let i=0; const el=document.getElementById('typed');
+(function type(){ if(i<=texto.length){ el.textContent=texto.slice(0,i); i++; setTimeout(type,45);} })();
+
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* menu mobile */
+const navToggle=document.getElementById('nav-toggle');
+const navMenu=document.getElementById('nav-menu');
+function closeMenu(){navToggle.classList.remove('open');navMenu.classList.remove('open');navToggle.setAttribute('aria-expanded','false');}
+function toggleMenu(){const open=navMenu.classList.toggle('open');navToggle.classList.toggle('open',open);navToggle.setAttribute('aria-expanded',open);}
+navToggle.addEventListener('click',toggleMenu);
+navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+window.addEventListener('resize',()=>{if(window.innerWidth>768)closeMenu();});
+</script>
+</body>
+</html>
