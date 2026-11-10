@@ -3,7 +3,7 @@ name: Deploy site no GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/deploy-pages.yml"]
+    paths: ["site/**", "VERSION", ".github/workflows/deploy-pages.yml"]
   workflow_dispatch:
 
 permissions:
@@ -23,6 +23,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Conferir versão da marca
+        run: |
+          v="$(cat VERSION)"
+          grep -q "Versão $v" site/index.html
+          grep -q "Versão $v" site/brand-lockup.svg
+          grep -q "content=\"$v\"" site/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

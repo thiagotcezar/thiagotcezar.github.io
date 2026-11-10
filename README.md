@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="site/favicon.svg" width="72" alt="TC Tech & Quality">
+<img src="site/brand-lockup.svg" width="360" alt="Tech & Quality · TC Apps · Versão 1.0.0">
 
 # Thiago Cezar
 
@@ -87,10 +87,16 @@ Código do site [thiagotcezar.github.io/tc-portfolio](https://thiagotcezar.githu
 
 ```
 site/
-├── index.html    # página única do portfólio
+├── index.html        # página única do portfólio
+├── brand-lockup.svg  # lockup de marca (logo + nome, selo TC, versão)
 └── favicon.svg
+VERSION               # versão atual do app
 .github/workflows/deploy-pages.yml   # publica site/ no GitHub Pages a cada push na main
 ```
+
+### Marca e versão
+
+O lockup segue o padrão: **logo + Tech & Quality**, abaixo o selo **TC** na cor do app (laranja `#ff7a1a`) + **Apps**, e por fim **Versão X.Y.Z** entre traços. A versão vem do arquivo `VERSION`; ao mudar, atualize também `site/brand-lockup.svg`, o `<meta name="version">` e o rodapé de `site/index.html`.
 
 Para ver localmente:
 

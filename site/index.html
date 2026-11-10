@@ -9,6 +9,7 @@
 <meta property="og:description" content="Senior Software Quality Assurance / SDET. Automação de testes Web, Mobile e APIs.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0a0a0a">
+<meta name="version" content="1.0.0">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
 :root{
@@ -121,6 +122,15 @@ nav a:hover{color:var(--orange)}
 .quote .role{color:var(--faint);font-size:11px}
 
 footer{border-top:1px solid var(--border);padding:34px 0;text-align:center;color:var(--faint);font-size:11.5px}
+/* lockup de marca: logo + nome, selo TC na cor do app, versão */
+.lockup{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:22px;
+  font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700}
+.lockup-app{display:flex;align-items:center;gap:14px;color:var(--text);font-size:30px;line-height:1}
+.lockup-app .ic{width:56px;height:56px;flex:none;padding:7px;border-radius:14px;background:var(--surface);border:1px solid var(--border)}
+.lockup-org{display:flex;align-items:center;gap:10px;color:var(--text);font-size:26px;line-height:1}
+.lockup-org .tc{background:var(--orange);color:var(--bg);font-size:21px;padding:6px 10px;border-radius:8px}
+.lockup-ver{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:14px;font-weight:500}
+.lockup-ver::before,.lockup-ver::after{content:"";width:40px;height:1px;background:var(--faint)}
 
 @media(max-width:768px){
   .hero{padding-top:32px}
@@ -166,7 +176,7 @@ footer{border-top:1px solid var(--border);padding:34px 0;text-align:center;color
         <circle cx="18" cy="18" r="2" fill="#ff7a1a"/>
         <path d="M27 27L36 36" stroke="#f5f5f5" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
-      <span class="brand-text">TC <span class="tag">TECH</span> &amp; QUALITY</span> <span class="cnpj">CNPJ: 68.364.741/0001-95</span>
+      <span class="brand-text">Tech &amp; Quality</span> <span class="cnpj">CNPJ: 68.364.741/0001-95</span>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span><span></span>
@@ -296,6 +306,19 @@ footer{border-top:1px solid var(--border);padding:34px 0;text-align:center;color
 </main>
 
 <footer>
+  <div class="lockup" aria-label="Tech &amp; Quality · TC Apps · Versão 1.0.0">
+    <div class="lockup-app">
+      <svg class="ic" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="13" stroke="#ff7a1a" stroke-width="2"/>
+        <circle cx="18" cy="18" r="7" stroke="#f5f5f5" stroke-width="2"/>
+        <circle cx="18" cy="18" r="2" fill="#ff7a1a"/>
+        <path d="M27 27L36 36" stroke="#f5f5f5" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span>Tech &amp; Quality</span>
+    </div>
+    <div class="lockup-org"><span class="tc">TC</span><span>Apps</span></div>
+    <div class="lockup-ver">Versão 1.0.0</div>
+  </div>
   <div class="wrap">TC TECH &amp; QUALITY CNPJ: 68.364.741/0001-95 — Thiago Cezar · Quality Assurance &amp; Test Automation</div>
 </footer>
 
