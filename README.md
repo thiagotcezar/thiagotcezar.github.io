@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="site/brand-lockup.svg" width="360" alt="Tech & Quality · TC Apps · Versão 1.0.0">
+<img src="site/brand-lockup.svg" width="220" alt="Tech & Quality · TC Apps · Versão 1.0.0">
 
 # Thiago Cezar
 
