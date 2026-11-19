@@ -38,7 +38,7 @@ Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de cri
 
 | Período | Cargo | Empresa | Destaques |
 | --- | --- | --- | --- |
-| mar/2021 – atual | **Senior Software Quality Assurance** | abastece-aí | Liderança técnica em qualidade, automação de testes e disseminação do mindset de qualidade em todo o ciclo de desenvolvimento. |
+| mar/2021 – atual | **Software Development Engineer in Test (SDET)** | abastece-aí | Liderança técnica em qualidade, automação de testes e disseminação do mindset de qualidade em todo o ciclo de desenvolvimento. |
 | jul/2020 – mar/2021 | **Technical Lead Quality Assurance** | TradersClub | Arquitetura de automação Web/Mobile/API com Ruby, Appium, Capybara, HTTParty e Cucumber. Entrevistas técnicas. |
 | abr/2019 – jul/2020 | **Senior Software Quality Assurance** | Fleury Medicina e Saúde | Arquitetura de automação nas 3 frentes; testes de API com Postman/Newman; palestrante no 1º Meetup Fleury Digital. |
 | fev/2019 – dez/2022 | **Instrutor de treinamento** | ACerT | Automação web (Capybara), mobile (Appium) e API (HTTParty), BDD/Gherkin com Cucumber e Ruby. |
