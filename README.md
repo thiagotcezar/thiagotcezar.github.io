@@ -1,4 +1,4 @@
-[![Site](https://img.shields.io/badge/site-thiagotcezar.github.io%2Ftc--portfolio-ff7a1a?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0a0a0a)](https://thiagotcezar.github.io/tc-portfolio/)
+[![Site](https://img.shields.io/badge/site-thiagotcezar.github.io-ff7a1a?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0a0a0a)](https://thiagotcezar.github.io/)
 [![Experiência](https://img.shields.io/badge/experi%C3%AAncia-10%20anos-ff7a1a?style=for-the-badge&labelColor=0a0a0a)](#-trajetória)
 [![Foco](https://img.shields.io/badge/foco-Web%20%C2%B7%20Mobile%20%C2%B7%20API-ff7a1a?style=for-the-badge&labelColor=0a0a0a)](#-stack)
 
@@ -10,7 +10,7 @@ thiago@tc-tech:~$ whoami && cat sobre.txt
 
 ## 👋 Sobre
 
-**Senior Software Development Engineer in Test (SDET)** com **10 anos de experiência** em Quality Engineering, especializado em estratégias de qualidade e automação de testes **Web, Mobile e APIs**.
+**Software Development Engineer in Test (SDET)** com **10 anos de experiência** em Quality Engineering, especializado em estratégias de qualidade e automação de testes **Web, Mobile e APIs**.
 
 Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de critérios de aceite até testes E2E, integração, regressivos, smoke e validações de APIs. Promovo **Quality Mindset**, **Shift-Left Testing** e prevenção de defeitos em parceria com Engenharia, Produto e Negócio.
 
@@ -29,7 +29,7 @@ Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de cri
 
 | Período | Cargo | Empresa | Destaques |
 | --- | --- | --- | --- |
-| mar/2021 – atual | **Senior Software Quality Assurance** | abastece-aí | Liderança técnica em qualidade, automação de testes e disseminação do mindset de qualidade em todo o ciclo de desenvolvimento. |
+| mar/2021 – atual | **Software Development Engineer in Test (SDET)** | abastece-aí | Liderança técnica em qualidade, automação de testes e disseminação do mindset de qualidade em todo o ciclo de desenvolvimento. |
 | jul/2020 – mar/2021 | **Technical Lead Quality Assurance** | TradersClub | Arquitetura de automação Web/Mobile/API com Ruby, Appium, Capybara, HTTParty e Cucumber. Entrevistas técnicas. |
 | abr/2019 – jul/2020 | **Senior Software Quality Assurance** | Fleury Medicina e Saúde | Arquitetura de automação nas 3 frentes; testes de API com Postman/Newman; palestrante no 1º Meetup Fleury Digital. |
 | fev/2019 – dez/2022 | **Instrutor de treinamento** | ACerT | Automação web (Capybara), mobile (Appium) e API (HTTParty), BDD/Gherkin com Cucumber e Ruby. |
@@ -74,7 +74,7 @@ Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de cri
 
 ## 🛠️ Sobre este repositório
 
-Código do site [thiagotcezar.github.io/tc-portfolio](https://thiagotcezar.github.io/tc-portfolio/): HTML, CSS e JavaScript puros, sem build.
+Código do site [thiagotcezar.github.io](https://thiagotcezar.github.io/): HTML, CSS e JavaScript puros, sem build. Layout em grid (bento), com seletor de idioma **PT/EN** e de tema **claro/escuro** no topo; as escolhas ficam salvas no navegador. Os textos ficam no objeto `I18N` e nas listas de dados no fim de `site/index.html`.
 
 ```
 site/
