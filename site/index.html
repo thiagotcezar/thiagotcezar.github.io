@@ -119,6 +119,12 @@ main{padding:8px 0 40px}
 .hero .role small{display:inline-block;font:600 12px/1 var(--mono);color:var(--orange-ink);background:var(--orange-soft);
   border-radius:6px;padding:5px 7px;margin-left:6px;vertical-align:3px}
 .hero .pitch{color:var(--muted);max-width:56ch;margin-top:14px}
+.term{display:grid;font:13px/1.5 var(--mono);color:var(--muted)}
+.term>span{grid-area:1/1;min-width:0;overflow-wrap:anywhere}
+.term .ghost{visibility:hidden}
+.term b{color:var(--orange-ink);font-weight:500}
+#typed::after{content:"▊";color:var(--orange);animation:blink 1s step-start infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
 .cta{display:flex;gap:10px;flex-wrap:wrap}
 .btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;height:46px;padding:0 20px;border-radius:12px;
   border:1px solid var(--orange);background:var(--orange);color:#0a0a0a;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
@@ -184,7 +190,7 @@ blockquote small{color:var(--faint);font-size:12px;display:block;line-height:1.4
 /* entrada suave (só opacidade e deslocamento curto, sem mudar layout) */
 .js .reveal{opacity:0;transform:translateY(12px)}
 .js .reveal.on{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none}.js .reveal.on{transition:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){#typed::after{animation:none}.js .reveal{opacity:1;transform:none}.js .reveal.on{transition:none}html{scroll-behavior:auto}}
 
 /* ---------- modal de contato ---------- */
 dialog.sheet{position:fixed;inset:0;margin:auto;border:0;padding:0;background:transparent;color:var(--text);
@@ -266,6 +272,7 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
   .hero::after{right:-160px;top:-160px}
   .hero .role small{margin-left:4px}
   .cta .btn{flex:1 1 auto}
+  .term{font-size:11.5px}
   .stats{grid-template-columns:1fr;gap:12px}
   .stat{display:grid;grid-template-columns:76px 1fr;align-items:center;gap:12px;padding:16px 20px}
   .stat .num{font-size:28px}
@@ -360,6 +367,7 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
       <button type="button" class="btn" data-open-contact><svg class="i"><use href="#i-contact"/></svg><span data-i18n="hero.cta1">Fale comigo</span></button>
       <a class="btn ghost" href="#experiencia"><span data-i18n="hero.cta2">Ver experiência</span><svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
+    <p class="term" aria-hidden="true"><span class="ghost"><b>thiago@tc-tech</b>:~$ <span id="typed-full"></span>▊</span><span><b>thiago@tc-tech</b>:~$ <span id="typed"></span></span></p>
   </section>
 
   <div class="stats span-4">
@@ -489,7 +497,7 @@ const I18N={
   "ap.3t":"Prevenção de defeitos","ap.3":"Automação confiável em CI/CD para entregar com segurança.",
   "now":"atual","current":"Atual","version":"Versão","credential":"Credencial",
   "theme.toLight":"Mudar para tema claro","theme.toDark":"Mudar para tema escuro",
-  "close":"Fechar","ct.call":"Ligar","ct.phone":"Telefone · WhatsApp","ct.copy":"Copiar","ct.copied":"Copiado"
+  "typed":"whoami && cat sobre.txt","close":"Fechar","ct.call":"Ligar","ct.phone":"Telefone · WhatsApp","ct.copy":"Copiar","ct.copied":"Copiado"
  },
  en:{
   "nav.home":"Home","nav.about":"About","nav.stack":"Stack","nav.xp":"Experience","nav.talks":"Talks","nav.edu":"Education","nav.recs":"Recommendations","nav.contact":"Contact",
@@ -506,7 +514,7 @@ const I18N={
   "ap.3t":"Defect prevention","ap.3":"Reliable automation in CI/CD to ship with confidence.",
   "now":"present","current":"Current","version":"Version","credential":"Credential",
   "theme.toLight":"Switch to light theme","theme.toDark":"Switch to dark theme",
-  "close":"Close","ct.call":"Call","ct.phone":"Phone · WhatsApp","ct.copy":"Copy","ct.copied":"Copied"
+  "typed":"whoami && cat about.txt","close":"Close","ct.call":"Call","ct.phone":"Phone · WhatsApp","ct.copy":"Copy","ct.copied":"Copied"
  }
 };
 
@@ -608,7 +616,7 @@ function render(){
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{
   lang=b.dataset.lang;document.documentElement.lang=lang==='pt'?'pt-BR':'en';
   try{localStorage.setItem('tc-lang',lang)}catch(e){}
-  render();
+  render();restartTyped();
 }));
 
 /* tema */
@@ -625,6 +633,14 @@ themeBtn.addEventListener('click',()=>{
   try{localStorage.setItem('tc-theme',next)}catch(e){}
   syncTheme();
 });
+
+/* digitação no terminal (a linha fantasma reserva o espaço final, então nada pula) */
+let typeTimer;
+function restartTyped(){
+  clearTimeout(typeTimer);const txt=I18N[lang].typed,el=$('#typed');$('#typed-full').textContent=txt;let i=0;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=txt;return;}
+  (function step(){el.textContent=txt.slice(0,i);if(i++<txt.length)typeTimer=setTimeout(step,45);})();
+}
 
 /* modal de contato */
 const dlg=$('#contact');
@@ -660,7 +676,7 @@ function setActive(){
 let ticking=false;
 window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{setActive();ticking=false;});}},{passive:true});
 
-render();setActive();
+render();restartTyped();setActive();
 </script>
 </body>
 </html>
