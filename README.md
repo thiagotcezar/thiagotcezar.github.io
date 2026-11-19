@@ -1,12 +1,3 @@
-<div align="center">
-
-<img src="site/brand-lockup.svg" width="220" alt="Tech & Quality · TC Apps · Versão 1.0.0">
-
-# Thiago Cezar
-
-**Senior Software Quality Assurance · SDET**
-TC Tech & Quality
-
 [![Site](https://img.shields.io/badge/site-thiagotcezar.github.io%2Ftc--portfolio-ff7a1a?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0a0a0a)](https://thiagotcezar.github.io/tc-portfolio/)
 [![Experiência](https://img.shields.io/badge/experi%C3%AAncia-10%20anos-ff7a1a?style=for-the-badge&labelColor=0a0a0a)](#-trajetória)
 [![Foco](https://img.shields.io/badge/foco-Web%20%C2%B7%20Mobile%20%C2%B7%20API-ff7a1a?style=for-the-badge&labelColor=0a0a0a)](#-stack)
