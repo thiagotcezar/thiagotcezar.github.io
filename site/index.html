@@ -65,8 +65,10 @@ svg.f{fill:currentColor;stroke:none}
 /* ---------- topo ---------- */
 .topbar{padding-top:env(safe-area-inset-top,0px)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--text);white-space:nowrap;line-height:1}
-.brand svg{width:30px;height:30px;flex:none}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text);white-space:nowrap;line-height:1}
+.brand svg{width:68px;height:30px;flex:none}
+.brand .wm{display:flex;align-items:center;gap:7px;font:800 12px/1 var(--mono);letter-spacing:.24em}
+.brand .wm i{display:block;width:6px;height:14px;background:var(--orange)}
 .controls{display:flex;align-items:center;gap:8px}
 .seg{display:flex;align-items:center;height:40px;border:1px solid var(--border);border-radius:999px;padding:3px;background:var(--surface)}
 .seg button{height:32px;font:600 11.5px/1 var(--mono);letter-spacing:.04em;color:var(--muted);background:none;border:0;
@@ -125,7 +127,6 @@ main{padding:8px 0 40px}
 .term b{color:var(--orange-ink);font-weight:500}
 #typed::after{content:"▊";color:var(--orange);animation:blink 1s step-start infinite;margin-left:2px}
 @keyframes blink{50%{opacity:0}}
-.cta{display:flex;gap:10px;flex-wrap:wrap}
 .btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14px;height:46px;padding:0 20px;border-radius:12px;
   border:1px solid var(--orange);background:var(--orange);color:#0a0a0a;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
 .btn svg{width:18px;height:18px}
@@ -239,7 +240,7 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
 .lockup{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:14px;opacity:.85;
   font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700}
 .lockup-app{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:13px;line-height:1}
-.lockup-app svg{width:20px;height:20px;flex:none;padding:2px;border-radius:5px;background:var(--surface);border:1px solid var(--border)}
+.lockup-app svg{width:40px;height:18px;flex:none}
 .lockup-org{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:11px;line-height:1}
 .lockup-org .tc{background:var(--orange);color:#0a0a0a;font-size:9.5px;padding:2px 4px;border-radius:3px}
 .lockup-ver{display:flex;align-items:center;gap:8px;color:var(--faint);font-size:10.5px;font-weight:500}
@@ -262,7 +263,7 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
   :root{--gutter:16px;--radius:16px;--dock-space:100px}
   body{font-size:14.5px}
   .topbar .wrap{height:64px}
-  .brand span{display:none}
+  .brand .wm{display:none}
   .seg{height:38px}.seg button{height:30px;padding:0 9px}
   .icon-btn{width:38px;height:38px}
   main{padding:4px 0 32px}
@@ -271,7 +272,6 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
   .hero{padding:28px 22px;gap:24px}
   .hero::after{right:-160px;top:-160px}
   .hero .role small{margin-left:4px}
-  .cta .btn{flex:1 1 auto}
   .term{font-size:11.5px}
   .stats{grid-template-columns:1fr;gap:12px}
   .stat{display:grid;grid-template-columns:76px 1fr;align-items:center;gap:12px;padding:16px 20px}
@@ -298,6 +298,13 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
 <script>document.documentElement.classList.add('js')</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 226 100">
+    <path d="M34 29 V40 L17 50 L34 60 V71 L6 55 V45 Z" fill="#ff7a1a"/>
+    <path d="M40 20 H86 V33 H70 V80 H56 V33 H40 Z" fill="currentColor"/>
+    <path d="M141.04 37 A30 30 0 1 0 141.04 63 H123.33 A16 16 0 1 1 123.33 37 Z" fill="currentColor"/>
+    <path d="M170 14 H183 L160 86 H147 Z" fill="#ff7a1a"/>
+    <path d="M192 29 L220 45 V55 L192 71 V60 L209 50 L192 40 Z" fill="#ff7a1a"/>
+  </symbol>
   <symbol id="mark" viewBox="0 0 40 40">
     <circle cx="18" cy="18" r="13" stroke="#ff7a1a" stroke-width="2" fill="none"/>
     <circle cx="18" cy="18" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -325,8 +332,8 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
 <header class="topbar" id="inicio">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="Tech &amp; Quality">
-      <svg class="ic-mark" aria-hidden="true"><use href="#mark"/></svg>
-      <span>Tech &amp; Quality</span>
+      <svg class="ic-mark" aria-hidden="true"><use href="#logo"/></svg>
+      <span class="wm">TECH &amp; QUALITY<i aria-hidden="true"></i></span>
     </a>
     <div class="controls">
       <div class="seg" role="group" aria-label="Idioma / Language">
@@ -362,10 +369,6 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
       <h1 id="h-name">Thiago <span>Cezar</span></h1>
       <p class="role">Software Development Engineer <span class="nw">in Test<small>SDET</small></span></p>
       <p class="pitch" data-i18n="hero.pitch">Quality Engineering de ponta a ponta: estratégia de testes, automação Web, Mobile e API e qualidade integrada ao ciclo de desenvolvimento.</p>
-    </div>
-    <div class="cta">
-      <button type="button" class="btn" data-open-contact><svg class="i"><use href="#i-contact"/></svg><span data-i18n="hero.cta1">Fale comigo</span></button>
-      <a class="btn ghost" href="#experiencia"><span data-i18n="hero.cta2">Ver experiência</span><svg class="i"><use href="#i-arrow"/></svg></a>
     </div>
     <p class="term" aria-hidden="true"><span class="ghost"><b>thiago@tc-tech</b>:~$ <span id="typed-full"></span>▊</span><span><b>thiago@tc-tech</b>:~$ <span id="typed"></span></span></p>
   </section>
@@ -433,7 +436,7 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
 <footer class="site-footer">
   <div class="lockup" aria-label="Tech &amp; Quality · TC Apps · Versão 2.0.0">
     <div class="lockup-app">
-      <svg class="ic-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <svg class="ic-mark" aria-hidden="true"><use href="#logo"/></svg>
       <span>Tech &amp; Quality</span>
     </div>
     <div class="lockup-org"><span class="tc">TC</span><span>Apps</span></div>
@@ -485,7 +488,6 @@ const I18N={
  pt:{
   "nav.home":"Início","nav.about":"Sobre","nav.stack":"Stack","nav.xp":"Experiência","nav.talks":"Palestras","nav.edu":"Formação","nav.recs":"Recomendações","nav.contact":"Contato",
   "hero.pitch":"Quality Engineering de ponta a ponta: estratégia de testes, automação Web, Mobile e API e qualidade integrada ao ciclo de desenvolvimento.",
-  "hero.cta1":"Fale comigo","hero.cta2":"Ver experiência",
   "stat.years":"anos em Quality Engineering","stat.fronts":"frentes: Web, Mobile e API","stat.talks":"palestras e treinamentos",
   "label.about":"sobre","label.approach":"como eu trabalho","label.xp":"experiência","label.talks":"palestras",
   "label.teach":"ex-instrutor","label.edu":"formação acadêmica","label.certs":"certificações","label.recs":"recomendações",
@@ -502,7 +504,6 @@ const I18N={
  en:{
   "nav.home":"Home","nav.about":"About","nav.stack":"Stack","nav.xp":"Experience","nav.talks":"Talks","nav.edu":"Education","nav.recs":"Recommendations","nav.contact":"Contact",
   "hero.pitch":"End-to-end Quality Engineering: test strategy, Web, Mobile and API automation, and quality built into the development lifecycle.",
-  "hero.cta1":"Get in touch","hero.cta2":"See experience",
   "stat.years":"years in Quality Engineering","stat.fronts":"fronts: Web, Mobile and API","stat.talks":"talks and trainings",
   "label.about":"about","label.approach":"how I work","label.xp":"experience","label.talks":"talks",
   "label.teach":"former instructor","label.edu":"education","label.certs":"certifications","label.recs":"recommendations",
