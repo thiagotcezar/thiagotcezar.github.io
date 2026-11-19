@@ -74,7 +74,7 @@ Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de cri
 
 ## 🛠️ Sobre este repositório
 
-Código do site [thiagotcezar.github.io](https://thiagotcezar.github.io/): HTML, CSS e JavaScript puros, sem build. Layout em grid (bento), com seletor de idioma **PT/EN** e de tema **claro/escuro** no topo; as escolhas ficam salvas no navegador. Os textos ficam no objeto `I18N` e nas listas de dados no fim de `site/index.html`.
+Código do site [thiagotcezar.github.io](https://thiagotcezar.github.io/): HTML, CSS e JavaScript puros, sem build. Layout em grid (bento), menu flutuante com ícones (início, seções e contato), modal de contato e seletores de idioma **PT/EN** e tema **claro/escuro** no topo; as escolhas ficam salvas no navegador. Os textos ficam no objeto `I18N` e nas listas de dados no fim de `site/index.html`.
 
 ```
 site/
