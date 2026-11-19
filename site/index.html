@@ -297,10 +297,48 @@ dialog.sheet[open] .sheet-card{animation:pop .28s cubic-bezier(.2,.9,.3,1.1)}
   .dock .contact-btn{margin-left:2px}
   .seg .flag{display:none}
 }
+
+/* ---------- abertura: código sendo escrito ---------- */
+.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:#0a0a0a;
+  background-image:linear-gradient(rgba(255,122,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,122,26,.05) 1px,transparent 1px);
+  background-size:44px 44px;transition:opacity .45s ease,visibility .45s;color:#f5f5f5}
+.intro.out{opacity:0;visibility:hidden}
+.intro-stage{width:min(620px,100%);display:grid;place-items:center}
+.intro-stage>*{grid-area:1/1}
+.editor{width:100%;background:#121212;border:1px solid #262626;border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,122,26,.04);transition:transform .45s ease,opacity .45s ease}
+.editor-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid #262626;background:#181818}
+.editor-bar i{width:10px;height:10px;border-radius:50%;background:#333}
+.editor-bar i:first-child{background:#ff7a1a}
+.editor-bar span{margin-left:8px;font:500 12px/1 var(--mono);color:#a3a3a3}
+.editor pre{margin:0;padding:18px 18px 20px;font:13.5px/1.75 var(--mono);color:#f5f5f5;white-space:pre-wrap;overflow-wrap:anywhere;min-height:12.5em}
+.editor .ln{display:inline-block;width:2.2em;color:#4a4a4a;user-select:none}
+.tk-k{color:#ff7a1a}.tk-s{color:#ffb37a}.tk-f{color:#f5f5f5;font-weight:700}.tk-p{color:#a3a3a3}.tk-c{color:#6b6b6b}.tk-ok{color:#ff7a1a;font-weight:700}
+.caret{display:inline-block;width:.6em;height:1.1em;background:#ff7a1a;vertical-align:-.18em;animation:blink 1s step-start infinite}
+.intro-logo{display:grid;justify-items:center;gap:12px;opacity:0;transform:translateY(8px) scale(.96);transition:opacity .4s ease,transform .4s ease}
+.intro-logo svg{width:150px;height:66px;color:#f5f5f5}
+.intro-logo span{font:800 12px/1 var(--mono);letter-spacing:.3em;color:#a3a3a3}
+.intro.done .intro-logo{opacity:1;transform:none}
+.intro.done .editor{opacity:0;transform:scale(.96)}
+.intro-skip{position:absolute;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));height:40px;padding:0 16px;border-radius:999px;
+  border:1px solid #333;background:rgba(24,24,24,.8);color:#a3a3a3;font:500 12px/1 var(--mono);cursor:pointer}
+.intro-skip:hover{color:#f5f5f5;border-color:#ff7a1a}
+html.intro-on body{overflow:hidden}
+@media(max-width:640px){.editor pre{font-size:10.5px;padding:14px 12px 16px;white-space:pre;overflow:hidden}.editor .ln{width:1.8em}.intro-logo svg{width:120px;height:53px}}
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-stage">
+    <div class="editor">
+      <div class="editor-bar"><i></i><i></i><i></i><span>portfolio.spec.ts</span></div>
+      <pre id="intro-code"></pre>
+    </div>
+    <div class="intro-logo"><svg><use href="#logo"/></svg><span>TECH &amp; QUALITY</span></div>
+  </div>
+  <button type="button" class="intro-skip" id="intro-skip">pular ›</button>
+</div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="logo" viewBox="0 0 226 100">
@@ -683,6 +721,52 @@ let ticking=false;
 window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{setActive();ticking=false;});}},{passive:true});
 
 render();restartTyped();setActive();
+
+/* abertura: código sendo escrito */
+(function(){
+  const intro=$('#intro'),pre=$('#intro-code');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timers=[],finished=false;
+  function finish(){
+    if(finished)return;finished=true;timers.forEach(clearTimeout);
+    intro.classList.add('out');document.documentElement.classList.remove('intro-on');
+    setTimeout(()=>intro.remove(),500);
+  }
+  if(reduce){intro.remove();return;}
+  document.documentElement.classList.add('intro-on');
+  $('#intro-skip').addEventListener('click',finish);
+  intro.addEventListener('click',e=>{if(e.target===intro)finish();});
+  document.addEventListener('keydown',function k(e){if(e.key==='Escape'||e.key==='Enter'){finish();document.removeEventListener('keydown',k);}});
+  const L=[
+    [['k','import'],['p',' { '],['f','test'],['p',', '],['f','expect'],['p',' } '],['k','from'],['s'," '@tc/qa'"],['p',';']],
+    [],
+    [['f','test'],['p','('],['s',"'SDET'"],['p',', '],['k','async'],['p',' ({ page }) => {']],
+    [['p','  '],['k','await'],['p',' page.'],['f','goto'],['p','('],['s',"'/portfolio'"],['p',');']],
+    [['p','  '],['k','await'],['p',' '],['f','expect'],['p','(page).'],['f','toHaveQuality'],['p','();']],
+    [['p','});']],
+    [],
+    [['c','$ npx playwright test']],
+    [['ok','✓ 1 passed'],['c',' (10+ anos)']]
+  ];
+  const caret=document.createElement('span');caret.className='caret';
+  let li=0,ti=0,ci=0,lineEl=null,tokEl=null,t=0;
+  function newLine(){lineEl=document.createElement('div');const n=document.createElement('span');n.className='ln';n.textContent=String(li+1);
+    lineEl.appendChild(n);pre.appendChild(lineEl);lineEl.appendChild(caret);tokEl=null;}
+  newLine();
+  function step(){
+    if(li>=L.length){timers.push(setTimeout(()=>intro.classList.add('done'),250));timers.push(setTimeout(finish,1000));return;}
+    const line=L[li];
+    if(ti>=line.length){li++;ti=0;ci=0;if(li<L.length)newLine();timers.push(setTimeout(step,li===7?180:li>7?260:35));return;}
+    const [cls,txt]=line[ti];
+    if(!tokEl){tokEl=document.createElement('span');tokEl.className='tk-'+cls;lineEl.insertBefore(tokEl,caret);}
+    if(li>=8){tokEl.textContent=txt;ti++;tokEl=null;timers.push(setTimeout(step,120));return;}
+    tokEl.textContent+=txt[ci++];
+    if(ci>=txt.length){ti++;ci=0;tokEl=null;}
+    timers.push(setTimeout(step,li===7?14:6));
+  }
+  timers.push(setTimeout(step,200));
+})();
+
 </script>
 </body>
 </html>
