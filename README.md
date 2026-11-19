@@ -1,4 +1,4 @@
-[![Site](https://img.shields.io/badge/site-thiagotcezar.github.io%2Ftc--portfolio-ff7a1a?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0a0a0a)](https://thiagotcezar.github.io/tc-portfolio/)
+[![Site](https://img.shields.io/badge/site-thiagotcezar.github.io-ff7a1a?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0a0a0a)](https://thiagotcezar.github.io/)
 [![Experiência](https://img.shields.io/badge/experi%C3%AAncia-10%20anos-ff7a1a?style=for-the-badge&labelColor=0a0a0a)](#-trajetória)
 [![Foco](https://img.shields.io/badge/foco-Web%20%C2%B7%20Mobile%20%C2%B7%20API-ff7a1a?style=for-the-badge&labelColor=0a0a0a)](#-stack)
 
@@ -74,7 +74,7 @@ Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de cri
 
 ## 🛠️ Sobre este repositório
 
-Código do site [thiagotcezar.github.io/tc-portfolio](https://thiagotcezar.github.io/tc-portfolio/): HTML, CSS e JavaScript puros, sem build. Layout em grid (bento), com seletor de idioma **PT/EN** e de tema **claro/escuro** no topo; as escolhas ficam salvas no navegador. Os textos ficam no objeto `I18N` e nas listas de dados no fim de `site/index.html`.
+Código do site [thiagotcezar.github.io](https://thiagotcezar.github.io/): HTML, CSS e JavaScript puros, sem build. Layout em grid (bento), com seletor de idioma **PT/EN** e de tema **claro/escuro** no topo; as escolhas ficam salvas no navegador. Os textos ficam no objeto `I18N` e nas listas de dados no fim de `site/index.html`.
 
 ```
 site/
