@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="site/brand-lockup.svg" width="220" alt="Tech & Quality · TC Apps · Versão 1.0.0">
+<img src="site/brand-lockup.svg" width="220" alt="Tech & Quality · TC Apps · Versão 2.0.0">
 
 # Thiago Cezar
 
-**Senior Software Quality Assurance · SDET**
+**Software Development Engineer in Test (SDET)**
 TC Tech & Quality
 
 [![Site](https://img.shields.io/badge/site-thiagotcezar.github.io%2Ftc--portfolio-ff7a1a?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0a0a0a)](https://thiagotcezar.github.io/tc-portfolio/)
@@ -19,7 +19,7 @@ thiago@tc-tech:~$ whoami && cat sobre.txt
 
 ## 👋 Sobre
 
-**Senior Software Development Engineer in Test (SDET)** com **10 anos de experiência** em Quality Engineering, especializado em estratégias de qualidade e automação de testes **Web, Mobile e APIs**.
+**Software Development Engineer in Test (SDET)** com **10 anos de experiência** em Quality Engineering, especializado em estratégias de qualidade e automação de testes **Web, Mobile e APIs**.
 
 Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de critérios de aceite até testes E2E, integração, regressivos, smoke e validações de APIs. Promovo **Quality Mindset**, **Shift-Left Testing** e prevenção de defeitos em parceria com Engenharia, Produto e Negócio.
 
@@ -83,7 +83,7 @@ Atuo em todo o ciclo de desenvolvimento, desde refinamentos e definição de cri
 
 ## 🛠️ Sobre este repositório
 
-Código do site [thiagotcezar.github.io/tc-portfolio](https://thiagotcezar.github.io/tc-portfolio/): HTML, CSS e JavaScript puros, sem build.
+Código do site [thiagotcezar.github.io/tc-portfolio](https://thiagotcezar.github.io/tc-portfolio/): HTML, CSS e JavaScript puros, sem build. Layout em grid (bento), com seletor de idioma **PT/EN** e de tema **claro/escuro** no topo; as escolhas ficam salvas no navegador. Os textos ficam no objeto `I18N` e nas listas de dados no fim de `site/index.html`.
 
 ```
 site/
